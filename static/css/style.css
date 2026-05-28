@@ -86,3 +86,34 @@ h1 {
 .hero-btn:hover {
     background-color: #5b21b6;
 }
+
+.services {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #111827;
+}
+
+.service-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+    color: #7c3aed;
+    margin-bottom: 1rem;
+}
