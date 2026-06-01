@@ -186,6 +186,23 @@ nav {
    opacity: 0.9;
 }
 
+/* --------------------
+   Bookings Page
+-------------------- */
+
+.bookings-page {
+    min-height: 70vh;
+    padding: 4rem 2rem;
+}
+
+.bookings-page h1 {
+    color: #7c3aed;
+    margin-bottom: 1rem;
+}
+
+.bookings-page p {
+    color: #555;
+}
 
 /* --------------------
    Footer
