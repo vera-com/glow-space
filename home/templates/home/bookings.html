@@ -1,8 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
-<section class="bookings-page">
+<section class="booking-page">
+
+    <div class="booking-image">
+        <img src="{% static 'images/salon-booking.jpg' %}" alt="Luxury beauty salon">
+    </div>
+
+    <div class="booking-form-container">
+
     <h1>Book an Appointment</h1>
 
     <p>
@@ -25,6 +33,7 @@
 
     <button type="submit">Book Now</button>
 </form>
+</div>
 
 </section>
 

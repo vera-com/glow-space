@@ -242,6 +242,38 @@ nav {
     background-color: #5b21b6;
 }
 
+/* =========================
+   Booking Page Layout
+========================= */
+
+.booking-page {
+    display: flex;
+    min-height: 80vh;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    align-items: stretch;
+}
+
+.booking-image,
+.booking-form-container {
+    flex: 1;
+}
+
+.booking-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.booking-form-container {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 /* --------------------
    Footer
 -------------------- */
