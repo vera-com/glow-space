@@ -284,3 +284,56 @@ footer {
    text-align: center;
    padding: 1rem;
 }
+
+/* =================================
+   Responsive Booking Page
+================================= */
+
+@media screen and (max-width: 768px) {
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+
+    .booking-page {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 2rem;
+    }
+
+    .booking-image,
+    .booking-form-container {
+        width: 100%;
+    }
+
+    .booking-form-container {
+        padding: 1rem;
+    }
+
+    .booking-image img {
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+     .booking-form label {
+        margin-top: 1rem;
+    }
+
+    .booking-form input,
+    .booking-form select,
+    .booking-form button {
+        width: 100%;
+    }
+}
