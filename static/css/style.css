@@ -319,6 +319,12 @@ footer {
 
     .booking-form-container {
         padding: 1rem;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+    .booking-form {
+        width: 100%;
+        max-width: 100%;
     }
 
     .booking-image img {
@@ -335,5 +341,6 @@ footer {
     .booking-form select,
     .booking-form button {
         width: 100%;
+        box-sizing: border-box;
     }
 }
