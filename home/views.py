@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Booking
 
 
@@ -17,5 +18,11 @@ def bookings(request):
             preferred_date=request.POST.get("preferred_date"),
             preferred_time=request.POST.get("preferred_time"),
         )
+        messages.success(
+            request,
+            "Your booking request has been submitted successfully."
+        )
+
+        return redirect("bookings")
 
     return render(request, "home/bookings.html")

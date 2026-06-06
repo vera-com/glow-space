@@ -17,6 +17,12 @@
         Choose your preferred beauty and wellness service.
     </p>
 
+    {% if messages %}
+    {% for message in messages %}
+        <p class="success-message">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
     <form method="POST" 
     class="booking-form">
       {% csrf_token %}
