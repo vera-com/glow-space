@@ -17,25 +17,27 @@
         Choose your preferred beauty and wellness service.
     </p>
 
-    <form class="booking-form">
+    <form method="POST" 
+    class="booking-form">
+      {% csrf_token %}
     <label for="name">Name</label>
-    <input type="text" id="name">
+    <input type="text" id="name" name="name" required>
 
     <label for="email">Email</label>
-    <input type="email" id="email">
+    <input type="email" id="email" name="email" required>
 
     <label for="service">Service</label>
-    <select id="service">
+    <select id="service" name="service" required>
         <option>Facial Treatment</option>
         <option>Massage Therapy</option>
         <option>Nail Care</option>
     </select>
-    
+
     <label for="date">Preferred Date</label>
-<input type="date" id="date">
+<input type="date" id="date" name="preferred_date" required>
 
 <label for="time">Preferred Time</label>
-<input type="time" id="time">
+<input type="time" id="time" name="preferred_time" required>
 
 
     <button type="submit">Book Now</button>

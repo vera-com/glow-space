@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Booking
 
 
 def home(request):
@@ -6,4 +7,15 @@ def home(request):
 
 
 def bookings(request):
-    return render(request, 'home/bookings.html')
+
+    if request.method == "POST":
+
+        Booking.objects.create(
+            name=request.POST.get("name"),
+            email=request.POST.get("email"),
+            service=request.POST.get("service"),
+            preferred_date=request.POST.get("preferred_date"),
+            preferred_time=request.POST.get("preferred_time"),
+        )
+
+    return render(request, "home/bookings.html")
