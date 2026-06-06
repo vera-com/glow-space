@@ -251,6 +251,16 @@ nav {
     margin-bottom: 1rem;
 }
 
+.error-message {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+
 
 /* =========================
    Booking Page Layout
