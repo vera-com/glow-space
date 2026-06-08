@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Booking
 from datetime import date, datetime
@@ -26,7 +26,7 @@ def bookings(request):
         if preferred_date < str(date.today()):
             messages.error(request, "Please choose today or a future date.")
             return redirect("bookings")
-            
+                   
         booking_datetime = datetime.strptime(
             f"{preferred_date} {preferred_time}",
             "%Y-%m-%d %H:%M"
@@ -61,4 +61,25 @@ def appointments(request):
         request,
         "home/appointments.html",
         {"bookings": bookings}
+    )
+
+
+def edit_appointment(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    if request.method == "POST":
+        booking.name = request.POST.get("name", "").strip()
+        booking.email = request.POST.get("email", "").strip()
+        booking.service = request.POST.get("service")
+        booking.preferred_date = request.POST.get("preferred_date")
+        booking.preferred_time = request.POST.get("preferred_time")
+        booking.save()
+
+        messages.success(request, "Appointment updated successfully.")
+        return redirect("appointments")
+
+    return render(
+        request,
+        "home/edit_appointment.html",
+        {"booking": booking}
     )
