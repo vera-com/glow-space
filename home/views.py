@@ -52,3 +52,13 @@ def bookings(request):
         return redirect("bookings")
 
     return render(request, "home/bookings.html")
+
+
+def appointments(request):
+    bookings = Booking.objects.all()
+
+    return render(
+        request,
+        "home/appointments.html",
+        {"bookings": bookings}
+    )

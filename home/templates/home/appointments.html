@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="appointments-page">
+    <h1>My Appointments</h1>
+
+    {% if bookings %}
+        <div class="appointments-container">
+            {% for booking in bookings %}
+                <div class="appointment-card">
+                    <h2>{{ booking.service }}</h2>
+                    <p><strong>Name:</strong> {{ booking.name }}</p>
+                    <p><strong>Email:</strong> {{ booking.email }}</p>
+                    <p><strong>Date:</strong> {{ booking.preferred_date }}</p>
+                    <p><strong>Time:</strong> {{ booking.preferred_time }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No appointments have been booked yet.</p>
+    {% endif %}
+</section>
+
+{% endblock %}
