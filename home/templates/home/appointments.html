@@ -5,7 +5,15 @@
 <section class="appointments-page">
     <h1>My Appointments</h1>
 
+   {% if messages %}
+       {% for message in messages %}
+           {% if message.tags == 'success' %}
+               <p class="success-message">{{ message }}</p>
+           {% endif %}
+       {% endfor %}
+   {% endif %}
     {% if bookings %}
+    
         <div class="appointments-container">
             {% for booking in bookings %}
                 <div class="appointment-card">

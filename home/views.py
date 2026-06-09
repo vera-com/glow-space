@@ -25,12 +25,10 @@ def bookings(request):
             return redirect("bookings")
         if preferred_date < str(date.today()):
             messages.error(request, "Please choose today or a future date.")
-            return redirect("bookings")
-                   
+            return redirect("bookings")       
         booking_datetime = datetime.strptime(
             f"{preferred_date} {preferred_time}",
-            "%Y-%m-%d %H:%M"
-        )
+            "%Y-%m-%d %H:%M")
 
         if booking_datetime < datetime.now():
             messages.error(request, "Please choose a future date and time.")
@@ -68,11 +66,30 @@ def edit_appointment(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
 
     if request.method == "POST":
-        booking.name = request.POST.get("name", "").strip()
-        booking.email = request.POST.get("email", "").strip()
-        booking.service = request.POST.get("service")
-        booking.preferred_date = request.POST.get("preferred_date")
-        booking.preferred_time = request.POST.get("preferred_time")
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        service = request.POST.get("service")
+        preferred_date = request.POST.get("preferred_date")
+        preferred_time = request.POST.get("preferred_time")
+
+        if not name or not email or not preferred_date or not preferred_time:
+            messages.error(request, "Please complete all appointment fields.")
+            return redirect("edit_appointment", booking_id=booking.id)
+
+        booking_datetime = datetime.strptime(
+            f"{preferred_date} {preferred_time}",
+            "%Y-%m-%d %H:%M"
+        )
+
+        if booking_datetime <= datetime.now():
+            messages.error(request, "Please choose a future date and time.")
+            return redirect("edit_appointment", booking_id=booking.id)
+
+        booking.name = name
+        booking.email = email
+        booking.service = service
+        booking.preferred_date = preferred_date
+        booking.preferred_time = preferred_time
         booking.save()
 
         messages.success(request, "Appointment updated successfully.")
@@ -82,4 +99,4 @@ def edit_appointment(request, booking_id):
         request,
         "home/edit_appointment.html",
         {"booking": booking}
-    )
+        )
