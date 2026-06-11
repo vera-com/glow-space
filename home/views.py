@@ -100,3 +100,18 @@ def edit_appointment(request, booking_id):
         "home/edit_appointment.html",
         {"booking": booking}
         )
+
+
+def delete_appointment(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    if request.method == "POST":
+        booking.delete()
+        messages.success(request, "Appointment deleted successfully.")
+        return redirect("appointments")
+
+    return render(
+        request,
+        "home/delete_appointment.html",
+        {"booking": booking}
+    )

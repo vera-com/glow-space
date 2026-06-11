@@ -13,7 +13,7 @@
        {% endfor %}
    {% endif %}
     {% if bookings %}
-    
+
         <div class="appointments-container">
             {% for booking in bookings %}
                 <div class="appointment-card">
@@ -23,9 +23,14 @@
                     <p><strong>Date:</strong> {{ booking.preferred_date }}</p>
                     <p><strong>Time:</strong> {{ booking.preferred_time }}</p>
 
-                    <a href="{% url 'edit_appointment' booking.id %}">
+                    <a href="{% url 'edit_appointment' booking.id %}" class="edit-btn">
     Edit
 </a>
+            
+                    <a href="{% url 'delete_appointment' booking.id %}" class="delete-btn">
+    Delete
+</a>
+
 
                 </div>
             {% endfor %}
