@@ -20,8 +20,8 @@
                     <h2>{{ booking.service }}</h2>
                     <p><strong>Name:</strong> {{ booking.name }}</p>
                     <p><strong>Email:</strong> {{ booking.email }}</p>
-                    <p><strong>Date:</strong> {{ booking.preferred_date }}</p>
-                    <p><strong>Time:</strong> {{ booking.preferred_time }}</p>
+                    <p><strong>Date:</strong> {{ booking.preferred_date|date:"d M Y" }}</p>
+                    <p><strong>Time:</strong> {{ booking.preferred_time|time:"H:i" }}</p>
 
                     <a href="{% url 'edit_appointment' booking.id %}" class="edit-btn">
     Edit

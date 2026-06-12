@@ -42,10 +42,19 @@
     </select>
 
     <label for="date">Preferred Date</label>
-<input type="date" id="date" name="preferred_date" required>
+<input type="date" id="date" name="preferred_date" min="{{ today }}" required>
 
 <label for="time">Preferred Time</label>
-<input type="time" id="time" name="preferred_time" required>
+<input
+    type="time"
+    id="time"
+    name="preferred_time"
+    value="{{ booking.preferred_time|time:'H:i' }}"
+    min="09:00"
+    max="21:00"
+    required
+>
+
 
 
     <button type="submit">Book Now</button>

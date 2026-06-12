@@ -30,6 +30,13 @@ def bookings(request):
             f"{preferred_date} {preferred_time}",
             "%Y-%m-%d %H:%M")
 
+        appointment_time = booking_datetime.time()
+        if appointment_time.hour < 9 or appointment_time.hour >= 21:
+            messages.error(
+                request,
+                "Appointments can only be booked between 09:00 and 21:00.")
+            return redirect("bookings")
+
         if booking_datetime < datetime.now():
             messages.error(request, "Please choose a future date and time.")
             return redirect("bookings")
@@ -49,7 +56,8 @@ def bookings(request):
 
         return redirect("bookings")
 
-    return render(request, "home/bookings.html")
+    return render(request, "home/bookings.html", {
+         "today": date.today().isoformat})
 
 
 def appointments(request):
@@ -80,6 +88,12 @@ def edit_appointment(request, booking_id):
             f"{preferred_date} {preferred_time}",
             "%Y-%m-%d %H:%M"
         )
+        appointment_time = booking_datetime.time()
+        if appointment_time.hour < 9 or appointment_time.hour >= 21:
+            messages.error(
+             request,
+             "Appointments can only be booked between 09:00 and 21:00.")
+            return redirect("edit_appointment", booking_id=booking.id)
 
         if booking_datetime <= datetime.now():
             messages.error(request, "Please choose a future date and time.")
@@ -98,7 +112,8 @@ def edit_appointment(request, booking_id):
     return render(
         request,
         "home/edit_appointment.html",
-        {"booking": booking}
+        {"booking": booking, "today":
+         date.today().isoformat()}
         )
 
 

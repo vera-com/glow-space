@@ -33,10 +33,20 @@
             </select>
 
             <label for="date">Preferred Date</label>
-            <input type="date" id="date" name="preferred_date" value="{{ booking.preferred_date|date:'Y-m-d' }}" required>
+            <input type="date" id="date" name="preferred_date" value="{{ booking.preferred_date|date:'Y-m-d' }}" min="{{ today }}" required>
 
             <label for="time">Preferred Time</label>
-            <input type="time" id="time" name="preferred_time" value="{{ booking.preferred_time|time:'H:i' }}" required>
+<input
+    type="time"
+    id="time"
+    name="preferred_time"
+    value="{{ booking.preferred_time|time:'H:i' }}"
+    min="09:00"
+    max="21:00"
+    required
+>
+
+   
 
             <button type="submit">Update Appointment</button>
         </form>
