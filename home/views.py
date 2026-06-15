@@ -61,7 +61,9 @@ def bookings(request):
 
 
 def appointments(request):
-    bookings = Booking.objects.all()
+    bookings = Booking.objects.order_by(
+        "preferred_date"
+        "preferred_time")
 
     return render(
         request,

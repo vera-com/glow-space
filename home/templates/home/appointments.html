@@ -36,8 +36,14 @@
             {% endfor %}
         </div>
     {% else %}
+    <div class="empty-state">
         <p>No appointments have been booked yet.</p>
-    {% endif %}
+        <a href="{% url 'bookings' %}" class="appointment-action edit-link">
+            Book an appointment
+        </a>
+    </div>
+{% endif %}
+
 </section>
 
 {% endblock %}
