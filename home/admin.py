@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking
+from .models import Booking, Service
 
 
 @admin.register(Booking)
@@ -26,3 +26,15 @@ class BookingAdmin(admin.ModelAdmin):
     )
 
     ordering = ('-created_on',)
+
+
+@admin.register(Service)
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "price",
+    )
+
+    search_fields = (
+        "name",
+    )
