@@ -339,6 +339,35 @@ nav {
 }
 
 /* =========================
+   Contact Section
+========================= */
+
+.contact {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    text-align: center;
+}
+
+.contact h2 {
+    color: #6b35d9;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    margin-bottom: 12px;
+
+}
+
+.contact {
+    background-color: #faf7ff;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+
+
+/* =========================
    Appointments Page
 ========================= */
 

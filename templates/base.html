@@ -15,10 +15,10 @@
     </div>
 
     <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'home' %}#services">Services</a></li>
         <li><a href="{% url 'bookings' %}">Bookings</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="{% url 'home' %}#contact">Contact</a></li>
     </ul>
 </nav>
 

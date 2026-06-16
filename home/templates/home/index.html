@@ -11,12 +11,12 @@
             Beauty, wellness, and self-care bookings made simple.
         </p>
 
-        <a href="#" class="hero-btn">Book Appointment</a>
+        <a href="{% url 'bookings' %}" class="hero-btn">Book Appointment</a>
     </div>
 
 </section>
 
-<section class="services">
+<section class="services" id="services">
 
     <h2>Our Services</h2>
 
@@ -48,7 +48,30 @@
         Schedule your beauty and wellness services with ease.
     </p>
 
-    <a href="#" class="booking-btn">Book Now</a>
+    <a href="{% url 'bookings' %}" class="booking-btn">Book Now</a>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+
+    <p>
+    📧
+    <a href="mailto:info@glowspace.com">
+        info@glowspace.com
+    </a>
+</p>
+
+     <p>
+    📞
+    <a href="tel:+46727633818">
+        +46 727 633 818
+    </a>
+</p>
+
+    <p>
+        We would love to hear from you. Contact us for appointments
+        and beauty consultations.
+    </p>
 </section>
 
 {% endblock %}
