@@ -46,6 +46,16 @@ def bookings(request):
         if booking_datetime < datetime.now():
             messages.error(request, "Please choose a future date and time.")
             return redirect("bookings")
+           
+        if Booking.objects.filter(
+           preferred_date=preferred_date,
+           preferred_time=preferred_time
+           ).exists():
+            messages.error(
+             request,
+             "This time slot is already booked. Please choose another time."
+            )
+            return redirect("bookings")
 
         Booking.objects.create(
             name=name,
