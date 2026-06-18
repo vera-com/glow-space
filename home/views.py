@@ -17,7 +17,13 @@ def bookings(request):
         preferred_date = request.POST.get("preferred_date")
         preferred_time = request.POST.get("preferred_time")
 
-        if not name or not email or not preferred_date or not preferred_time:
+        if (
+            not name
+            or not email
+            or not service
+            or not preferred_date
+            or not preferred_time
+        ):
             messages.error(
                 request,
                 "Please complete all booking fields."
@@ -25,7 +31,7 @@ def bookings(request):
             return redirect("bookings")
         if preferred_date < str(date.today()):
             messages.error(request, "Please choose today or a future date.")
-            return redirect("bookings")       
+            return redirect("bookings")
         booking_datetime = datetime.strptime(
             f"{preferred_date} {preferred_time}",
             "%Y-%m-%d %H:%M")
@@ -40,6 +46,8 @@ def bookings(request):
         if booking_datetime < datetime.now():
             messages.error(request, "Please choose a future date and time.")
             return redirect("bookings")
+        print("POST DATA:", request.POST)
+        print("SERVICE SELECTED:", request.POST.get("service"))
 
         Booking.objects.create(
             name=name,

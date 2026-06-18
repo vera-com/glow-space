@@ -3,10 +3,16 @@ from django.db import models
 
 class Booking(models.Model):
     SERVICE_CHOICES = [
-        ('Facial Treatment', 'Facial Treatment'),
-        ('Hair Styling', 'Hair Styling'),
-        ('Massage Therapy', 'Massage Therapy'),
-    ]
+     ('Facial Treatment', 'Facial Treatment'),
+     ('Hair Styling', 'Hair Styling'),
+     ('Massage Therapy', 'Massage Therapy'),
+     ('Nail Care', 'Nail Care'),
+     ('Makeup Session', 'Makeup Session'),
+     ('Waxing', 'Waxing'),
+     ('Eyebrow Shaping', 'Eyebrow Shaping'),
+     ('Body Scrub', 'Body Scrub'),
+     ('Bridal Beauty Package', 'Bridal Beauty Package'),
+     ]
 
     name = models.CharField(max_length=100)
     email = models.EmailField()
