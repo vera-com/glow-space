@@ -13,3 +13,22 @@ if (menuToggle && navLinks) {
         });
     });
 }
+
+// Sunday booking validation
+const dateInput = document.getElementById("date");
+const dateError = document.getElementById("date-error");
+
+if (dateInput) {
+    dateInput.addEventListener("change", function () {
+
+        const selectedDate = new Date(this.value);
+
+        if (selectedDate.getDay() === 0) {
+            dateError.style.display = "block";
+            this.value = "";
+        } else {
+            dateError.style.display = "none";
+        }
+
+    });
+}

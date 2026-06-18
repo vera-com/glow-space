@@ -45,6 +45,10 @@
     <label for="date">Preferred Date</label>
 <input type="date" id="date" name="preferred_date" min="{{ today }}" required>
 
+<p id="date-error" class="error-message" style="display: none;">
+    Sorry, we are closed on Sundays. Please choose another date.
+</p>
+
 <label for="time">Preferred Time</label>
 <input
     type="time"
