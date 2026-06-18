@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Glow Space</title>
 </head>
+
 <body>
 
     <nav class="navbar">
@@ -14,7 +15,9 @@
         <h2>Glow Space</h2>
     </div>
 
-    <ul class="nav-links">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+
+    <ul class="nav-links" id="nav-links">
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'home' %}#services">Services</a></li>
         <li><a href="{% url 'bookings' %}">Bookings</a></li>
@@ -31,6 +34,9 @@
     <footer>
     <p>&copy; 2026 Glow Space. All rights reserved.</p>
 </footer>
+
+{% load static %}
+<script src="{% static 'js/script.js' %}"></script>
 
 </body>
 </html>
