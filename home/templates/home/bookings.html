@@ -36,9 +36,10 @@
 
     <label for="service">Service</label>
     <select id="service" name="service" required>
-        <option>Facial Treatment</option>
-        <option>Massage Therapy</option>
-        <option>Nail Care</option>
+        <option value="">Select a service</option>
+{% for service in services %}
+    <option value="{{ service.name }}">{{ service.name }}</option>
+{% endfor %}
     </select>
 
     <label for="date">Preferred Date</label>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Booking
+from .models import Booking, Service
 from datetime import date, datetime
 
 
@@ -55,9 +55,12 @@ def bookings(request):
         )
 
         return redirect("bookings")
+    services = Service.objects.all()
 
     return render(request, "home/bookings.html", {
-         "today": date.today().isoformat})
+         "today": date.today().isoformat(),
+         "services": services
+         })
 
 
 def appointments(request):
