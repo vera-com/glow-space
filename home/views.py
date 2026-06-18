@@ -46,8 +46,6 @@ def bookings(request):
         if booking_datetime < datetime.now():
             messages.error(request, "Please choose a future date and time.")
             return redirect("bookings")
-        print("POST DATA:", request.POST)
-        print("SERVICE SELECTED:", request.POST.get("service"))
 
         Booking.objects.create(
             name=name,
