@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Booking, Service
 from datetime import date, datetime
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 
 
 def home(request):
@@ -88,7 +90,7 @@ def bookings(request):
 
 def appointments(request):
     bookings = Booking.objects.order_by(
-        "preferred_date"
+        "preferred_date",
         "preferred_time")
 
     return render(
@@ -158,3 +160,18 @@ def delete_appointment(request, booking_id):
         "home/delete_appointment.html",
         {"booking": booking}
     )
+
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Account created successfully.")
+            return redirect("home")
+    else:
+        form = UserCreationForm()
+
+    return render(request, "home/register.html", {"form": form})

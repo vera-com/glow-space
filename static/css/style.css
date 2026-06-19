@@ -327,6 +327,23 @@ nav {
     margin-left: 0.5rem;
 }
 
+.logout-form {
+    display: inline;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font: inherit;
+}
+
+.logout-button:hover {
+    color: #a78bfa;
+}
+
 
 /* =========================
    Booking Page Layout
