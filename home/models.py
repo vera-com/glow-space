@@ -1,7 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Booking(models.Model):
+    user = models.ForeignKey(
+    User,
+    on_delete=models.CASCADE,
+    null=True,
+    blank=True,
+    )
+
     SERVICE_CHOICES = [
      ('Facial Treatment', 'Facial Treatment'),
      ('Hair Styling', 'Hair Styling'),

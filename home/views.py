@@ -67,6 +67,7 @@ def bookings(request):
             return redirect("bookings")
 
         Booking.objects.create(
+            user=request.user,
             name=name,
             email=email,
             service=service,
@@ -89,9 +90,11 @@ def bookings(request):
 
 
 def appointments(request):
-    bookings = Booking.objects.order_by(
-        "preferred_date",
-        "preferred_time")
+    bookings = Booking.objects.filter(
+     user=request.user).order_by(
+     "preferred_date",
+     "preferred_time"
+    )
 
     return render(
         request,
