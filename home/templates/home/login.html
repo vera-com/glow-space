@@ -3,19 +3,34 @@
 {% block content %}
 
 <section class="auth-section">
-    <h1>Login</h1>
+    <div class="auth-card">
+        <h1>Login</h1>
+        <p>Log in to book and manage your appointments.</p>
 
-    <form method="POST" class="auth-form">
-        {% csrf_token %}
-        {{ form.as_p }}
+        {% if form.errors %}
+            <p class="error-message">
+                Login failed. Please check your username and password and try again.
+            </p>
+        {% endif %}
 
-        <button type="submit">Login</button>
-    </form>
+        <form method="POST" class="auth-form">
+            {% csrf_token %}
 
-    <p>
-        Don't have an account?
-        <a href="{% url 'register' %}">Register here</a>
-    </p>
+            <label for="id_username">Username</label>
+            {{ form.username }}
+
+            <label for="id_password">Password</label>
+            {{ form.password }}
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p>
+            Don't have an account?
+            <a href="{% url 'register' %}">Register here</a>
+        </p>
+    </div>
 </section>
 
 {% endblock %}
+

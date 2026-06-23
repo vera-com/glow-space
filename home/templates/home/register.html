@@ -1,55 +1,40 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block content %}
 
-<section class="booking-section">
-    <div class="booking-container">
+<section class="auth-section">
+    <div class="auth-card">
 
-        <div class="booking-image">
-            <img src="{% static 'images/salon-booking.jpg' %}" alt="Glow Space Salon">
-        </div>
+        <h1>Create Account</h1>
+        <p>Create your Glow Space account to book and manage appointments.</p>
 
-        <div class="booking-form">
+        <form method="POST" class="auth-form">
+            {% csrf_token %}
 
-            <h2>Create an Account</h2>
+            {{ form.non_field_errors }}
 
-            <p>Register to manage your appointments.</p>
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            {{ form.username }}
+            {{ form.username.errors }}
 
-            <form method="POST">
+            <label for="{{ form.password1.id_for_label }}">Password</label>
+            {{ form.password1 }}
+            {{ form.password1.errors }}
 
-                {% csrf_token %}
+            <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+            {{ form.password2 }}
+            {{ form.password2.errors }}
 
-                <div class="form-group">
-    <label for="id_username">Username</label>
-    {{ form.username }}
-    {{ form.username.errors }}
-</div>
+            <button type="submit">
+                Create Account
+            </button>
 
-<div class="form-group">
-    <label for="id_password1">Password</label>
-    {{ form.password1 }}
-    {{ form.password1.errors }}
-</div>
+        </form>
 
-<div class="form-group">
-    <label for="id_password2">Confirm Password</label>
-    {{ form.password2 }}
-    {{ form.password2.errors }}
-</div>
-
-                <button type="submit" class="book-btn">
-                    Register
-                </button>
-
-            </form>
-
-            <p>
-                Already have an account?
-                <a href="{% url 'login' %}">Login here</a>
-            </p>
-
-        </div>
+        <p>
+            Already have an account?
+            <a href="{% url 'login' %}">Login here</a>
+        </p>
 
     </div>
 </section>

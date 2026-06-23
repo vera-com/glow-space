@@ -449,6 +449,104 @@ nav {
     font-weight: 600;
 }
 
+/* =================================
+   Authentication (Login $ Register)
+================================= */
+
+.auth-section {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 480px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card h1 {
+    color: #7b3fe4;
+    margin-bottom: .5rem;
+}
+
+.auth-card p {
+    margin-bottom: 1.5rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: #9b5de5;
+    box-shadow: 0 0 0 3px rgba(155, 93, 229, .2);
+
+}
+
+
+.auth-form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 1rem;
+    background: #9b5de5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.auth-form button:hover {
+    background: #7b2cbf;
+    transform: translateY(-2px);
+    transition: .3s ease;
+}
+
+.auth-card a {
+    color: #7b3fe4;
+    font-weight: 600;
+    text-decoration: none;
+}
+ 
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+.auth-form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: .4rem;
+}
+
+.errorlist,
+.messages {
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background: #ffe5e5;
+    color: #b00020;
+}
+
 
 /* --------------------
    Footer

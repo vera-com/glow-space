@@ -4,12 +4,14 @@ from .models import Booking, Service
 from datetime import date, datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
     return render(request, 'home/index.html')
 
 
+@login_required
 def bookings(request):
 
     if request.method == "POST":
@@ -89,6 +91,7 @@ def bookings(request):
          })
 
 
+@login_required
 def appointments(request):
     bookings = Booking.objects.filter(
      user=request.user).order_by(
@@ -103,6 +106,7 @@ def appointments(request):
     )
 
 
+@login_required
 def edit_appointment(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
 
@@ -150,6 +154,7 @@ def edit_appointment(request, booking_id):
         )
 
 
+@login_required
 def delete_appointment(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
 
