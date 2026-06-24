@@ -18,13 +18,25 @@
     <button class="menu-toggle" id="menu-toggle">☰</button>
 
     <ul class="nav-links" id="nav-links">
+        <li>
         <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Home</a>
+    </li>
 
+    <li>
 <a href="{% url 'home' %}#services">Services</a>
+   </li>
 
+<li>
+    <a href="{% url 'products' %}" class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}">Products</a>
+</li>
+
+<li>
 <a href="{% url 'bookings' %}" class="{% if request.resolver_match.url_name == 'bookings' %}active{% endif %}">Bookings</a>
+</li>
 
+<li>
 <a href="{% url 'home' %}#contact">Contact</a>
+</li>
 
 {% if user.is_authenticated %}
     <li><a href="{% url 'appointments' %}">My Appointments</a></li>

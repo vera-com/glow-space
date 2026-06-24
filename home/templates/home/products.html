@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="products-section">
+    <h1>Our Products</h1>
+    <p>Browse our selected beauty and self-care products.</p>
+
+    <div class="products-grid">
+        {% for product in products %}
+            <div class="product-card">
+                
+                {% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+{% endif %}
+
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p><strong>€{{ product.price }}</strong></p>
+
+                <button class="btn">Buy Now</button>
+            </div>
+        {% empty %}
+            <p>No products are available yet.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

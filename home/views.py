@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Booking, Service
+from .models import Booking, Service, Product
 from datetime import date, datetime
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import login
@@ -183,3 +183,13 @@ def register(request):
         form = RegisterForm()
 
     return render(request, "home/register.html", {"form": form})
+
+
+def products(request):
+    products = Product.objects.filter(available=True)
+
+    context = {
+        "products": products,
+    }
+
+    return render(request, "home/products.html", context)
