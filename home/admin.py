@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Booking, Service, Product
+from .models import Booking, Service, Product, Cart, CartItem
 
 
 @admin.register(Booking)
@@ -58,3 +58,13 @@ class ProductAdmin(admin.ModelAdmin):
         "name",
         "description",
     )
+
+
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(CartItem)
+class CartItemAdmin(admin.ModelAdmin):
+    pass
