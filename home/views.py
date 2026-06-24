@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Booking, Service
 from datetime import date, datetime
-from django.contrib.auth.forms import UserCreationForm
+from .forms import RegisterForm, LoginForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
@@ -172,7 +172,7 @@ def delete_appointment(request, booking_id):
 
 def register(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
 
         if form.is_valid():
             user = form.save()
@@ -180,6 +180,6 @@ def register(request):
             messages.success(request, "Account created successfully.")
             return redirect("home")
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
 
     return render(request, "home/register.html", {"form": form})

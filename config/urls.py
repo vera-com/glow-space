@@ -18,16 +18,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from home import views
+from home.forms import LoginForm
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('home.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("home.urls")),
     path("register/", views.register, name="register"),
     path(
         "login/",
-        auth_views.LoginView.as_view(template_name="home/login.html"),
-        name="login"),
-    path("logout/", auth_views.LogoutView.as_view(),
-         name="logout"),
+        auth_views.LoginView.as_view(
+            template_name="home/login.html",
+            authentication_form=LoginForm,
+        ),
+        name="login",
+    ),
+    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 ]
