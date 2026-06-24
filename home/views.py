@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Booking, Service, Product
 from datetime import date, datetime
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
@@ -193,3 +193,13 @@ def products(request):
     }
 
     return render(request, "home/products.html", context)
+
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    return render(
+        request,
+        "home/product_detail.html",
+        {"product": product}
+    )

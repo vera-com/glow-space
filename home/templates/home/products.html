@@ -17,7 +17,8 @@
                 <p>{{ product.description }}</p>
                 <p><strong>€{{ product.price }}</strong></p>
 
-                <button class="buy-btn">Buy Now</button>
+                <a href="{% url 'product_detail' product.id %}" class="buy-btn">View Product</a>
+                
             </div>
         {% empty %}
             <p>No products are available yet.</p>
