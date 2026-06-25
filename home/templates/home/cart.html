@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="cart-section">
+    <h1>Your Cart</h1>
+
+    {% if cart.items.all %}
+        <div class="cart-card">
+            {% for item in cart.items.all %}
+                <div class="cart-item">
+                    <h2>{{ item.product.name }}</h2>
+                    <p>Quantity: {{ item.quantity }}</p>
+                    <p>Price: €{{ item.product.price }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>Your cart is currently empty.</p>
+            <a href="{% url 'products' %}">Continue shopping</a>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

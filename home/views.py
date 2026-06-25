@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Booking, Service, Product
+from .models import Booking, Service, Product, Cart, CartItem
 from datetime import date, datetime
 from .forms import RegisterForm
 from django.contrib.auth import login
@@ -203,3 +203,36 @@ def product_detail(request, product_id):
         "home/product_detail.html",
         {"product": product}
     )
+
+
+@login_required
+def cart(request):
+    cart, created = Cart.objects.get_or_create(user=request.user)
+
+    return render(
+        request,
+        "home/cart.html",
+        {"cart": cart}
+    )
+
+
+@login_required
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    cart, created = Cart.objects.get_or_create(
+        user=request.user
+    )
+
+    cart_item, created = CartItem.objects.get_or_create(
+        cart=cart,
+        product=product
+    )
+
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+
+    messages.success(request, "Product added to your cart.")
+
+    return redirect("cart")

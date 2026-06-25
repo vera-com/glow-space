@@ -635,6 +635,34 @@ nav {
     border-radius: 10px;
 }
 
+/* ======================
+    Cart Page
+====================== */
+
+.cart-section {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 2rem;
+}
+
+.cart-card,
+.empty-state {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.empty-state a {
+    color: #7c3aed;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.empty-state a:hover {
+    text-decoration: underline;
+}
+
 
 /* --------------------
    Footer
