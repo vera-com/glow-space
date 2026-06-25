@@ -564,7 +564,7 @@ nav {
     padding: 1.5rem;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform .3ease;
+    transition: transform .3s ease;
 }
 
 .product-card img {
@@ -645,6 +645,26 @@ nav {
     padding: 2rem;
 }
 
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.cart-item img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-total {
+    text-align: right;
+    margin-top: 2rem;
+}
+
 .cart-card,
 .empty-state {
     background: #fff;
@@ -674,6 +694,7 @@ footer {
    text-align: center;
    padding: 1rem;
 }
+
 
 /* =================================
    Responsive Booking Page

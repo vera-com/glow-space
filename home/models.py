@@ -70,6 +70,9 @@ class Cart(models.Model):
     def __str__(self):
         return f"{self.user.username}'s Cart"
 
+    def total_price(self):
+        return sum(item.subtotal() for item in self.items.all())
+
 
 class CartItem(models.Model):
     cart = models.ForeignKey(
@@ -85,3 +88,6 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name} x {self.quantity}"
+
+    def subtotal(self):
+        return self.product.price * self.quantity
