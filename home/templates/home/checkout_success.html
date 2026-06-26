@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="cart-section">
+    <div class="cart-card">
+        <h1>Payment Successful</h1>
+        <p>Thank you for your order.</p>
+
+
+        <a href="{% url 'products' %}" class="buy-btn">
+            Continue Shopping
+        </a>
+    </div>
+</section>
+{% endblock %}

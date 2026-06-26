@@ -26,7 +26,7 @@
         </div>
 
         <a href="{% url 'products' %}" class="buy-btn">Continue Shopping</a>
-        <a href="#" class="buy-btn">Checkout</a>
+        <a href="{% url 'create_checkout_session' %}" class="buy-btn">Checkout</a>
     </div>
 
     {% else %}
