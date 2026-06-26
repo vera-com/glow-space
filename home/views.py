@@ -5,6 +5,11 @@ from datetime import date, datetime
 from .forms import RegisterForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+import stripe
+from django.conf import settings
+from django.urls import reverse
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def home(request):
@@ -236,3 +241,35 @@ def add_to_cart(request, product_id):
     messages.success(request, "Product added to your cart.")
 
     return redirect("cart")
+
+
+@login_required
+def create_checkout_session(request):
+    cart = Cart.objects.get(user=request.user)
+
+    checkout_session = stripe.checkout.Session.create(
+        payment_method_types=["card"],
+        line_items=[
+            {
+                "price_data": {
+                    "currency": "eur",
+                    "product_data": {
+                        "name": "Glow Space Order",
+                    },
+                    "unit_amount": int(cart.total_price() * 100),
+                },
+                "quantity": 1,
+            }
+        ],
+        mode="payment",
+        success_url=request.build_absolute_uri(reverse("checkout_success")),
+        cancel_url=request.build_absolute_uri(reverse("cart")),
+    )
+
+    return redirect(checkout_session.url)
+
+
+@login_required
+def checkout_success(request):
+    messages.success(request, "Payment successful. Thank you for your order.")
+    return render(request, "home/checkout_success.html")
