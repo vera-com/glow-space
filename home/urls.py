@@ -18,4 +18,10 @@ urlpatterns = [
     path("checkout/",
          views.create_checkout_session, name="create_checkout_session"),
     path("checkout/success/", views.checkout_success, name="checkout_success"),
+    path("cart/increase/<int:item_id>/",
+         views.increase_cart_item, name="increase_cart_item"),
+    path("cart/reduce/<int:item_id>/",
+         views.reduce_cart_item, name="reduce_cart_item"),
+    path("cart/remove/<int:item_id>/",
+         views.remove_cart_item, name="remove_cart_item"),
     ]

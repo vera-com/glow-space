@@ -275,3 +275,45 @@ def checkout_success(request):
     cart.items.all().delete()
     messages.success(request, "Payment successful. Thank you for your order!")
     return render(request, "home/checkout_success.html")
+
+
+@login_required
+def increase_cart_item(request, item_id):
+    cart_item = get_object_or_404(
+        CartItem,
+        id=item_id,
+        cart__user=request.user
+    )
+    cart_item.quantity += 1
+    cart_item.save()
+
+    return redirect("cart")
+
+
+@login_required
+def reduce_cart_item(request, item_id):
+    cart_item = get_object_or_404(
+        CartItem,
+        id=item_id,
+        cart__user=request.user
+    )
+
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+    else:
+        cart_item.delete()
+
+    return redirect("cart")
+
+
+@login_required
+def remove_cart_item(request, item_id):
+    cart_item = get_object_or_404(
+        CartItem,
+        id=item_id,
+        cart__user=request.user
+    )
+    cart_item.delete()
+
+    return redirect("cart")

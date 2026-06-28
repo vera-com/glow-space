@@ -16,6 +16,18 @@
                 <h2>{{ item.product.name }}</h2>
                 <p>Price: €{{ item.product.price }}</p>
                 <p>Quantity: {{ item.quantity }}</p>
+                <div class="cart-actions">
+    <a href="{% url 'reduce_cart_item' item.id %}" class="cart-action-btn">-</a>
+
+
+    <a href="{% url 'increase_cart_item' item.id %}" class="cart-action-btn">+</a>
+
+
+    <a href="{% url 'remove_cart_item' item.id %}" class="cart-remove-btn">
+        Remove
+    </a>
+</div>
+
                 <p><strong>Subtotal: €{{ item.subtotal }}</strong></p>
             </div>
         </div>
