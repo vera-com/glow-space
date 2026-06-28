@@ -635,6 +635,19 @@ nav {
     border-radius: 10px;
 }
 
+.product-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+
+.product-actions .buy-btn {
+    text-align: center;
+}
+
+
 /* ======================
     Cart Page
 ====================== */

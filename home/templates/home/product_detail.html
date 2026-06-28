@@ -7,13 +7,17 @@
             <img src="{{ product.image.url }}" alt="{{ product.name }}">
         {% endif %}
 
-        <div>
+        <div class="product-detail-info">
             <h1>{{ product.name }}</h1>
             <p>{{ product.description }}</p>
             <p><strong>€{{ product.price }}</strong></p>
 
+        <div class="product-actions">
+            <a href="{% url 'add_to_cart' product.id %}" class="buy-btn">Add to Cart</a>
+
             <a href="{% url 'add_to_cart' product.id %}" class="buy-btn">Buy Now</a>
         </div>
+    </div>
     </div>
 </section>
 {% endblock %}

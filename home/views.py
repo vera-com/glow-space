@@ -271,5 +271,7 @@ def create_checkout_session(request):
 
 @login_required
 def checkout_success(request):
-    messages.success(request, "Payment successful. Thank you for your order.")
+    cart = Cart.objects.get(user=request.user)
+    cart.items.all().delete()
+    messages.success(request, "Payment successful. Thank you for your order!")
     return render(request, "home/checkout_success.html")
