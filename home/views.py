@@ -317,3 +317,16 @@ def remove_cart_item(request, item_id):
     cart_item.delete()
 
     return redirect("cart")
+
+
+@login_required
+def buy_now(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    cart.items.all().delete()
+    CartItem.objects.create(
+        cart=cart,
+        product=product,
+        quantity=1
+    )
+    return redirect("create_checkout_session")
