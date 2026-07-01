@@ -23,21 +23,71 @@
     <div class="service-container">
 
         <div class="service-card">
-            <h3>Facial Treatments</h3>
-            <p>Relaxing skincare treatments for glowing skin.</p>
-        </div>
+    <div class="service-icon">✨</div>
+    <h3>Facial Treatments</h3>
+    <p>Relaxing skincare treatments for glowing, healthy skin.</p>
+
+    <p class="service-meta">30mins</p>
+    <p class="service-price">€35</p>
+
+    <a href="{% url 'bookings' %}" class="booking-btn">
+    Book Now
+</a>
+
+</div>
+
 
         <div class="service-card">
-            <h3>Massage Therapy</h3>
-            <p>Professional massages to help you relax and recharge.</p>
-        </div>
+    <div class="service-icon">💆‍♀️</div>
+    <h3>Massage Therapy</h3>
+    <p>Professional massages to help you relax and recharge.</p>
 
-        <div class="service-card">
-            <h3>Nail Care</h3>
-            <p>Manicure and pedicure services with premium care.</p>
-        </div>
+    <p class="service-meta">30mins</p>
+    <p class="service-price">€35</p>
 
+    <a href="{% url 'bookings' %}" class="booking-btn">
+    Book Now
+</a>
+
+</div>
+
+
+       <div class="service-card">
+    <div class="service-icon">💅</div>
+    <h3>Nail Care</h3>
+    <p>Manicure and pedicure services with premium care.</p>
+
+    <p class="service-meta">30mins</p>
+    <p class="service-price">€35</p>
+
+    <a href="{% url 'bookings' %}" class="booking-btn">
+    Book Now
+</a>
+</div>
+
+<div class="service-card">
+    {% if service.image %}
+    <div class="service-image">
+        <img src="{{ service.image.url }}" alt="{{ service.name}}">
     </div>
+       {% endif %}
+
+    <h3>Hair Braiding</h3>
+
+
+    <p>
+        Professional protective braids and stylish hairstyles
+        for every occasion.
+    </p>
+
+
+    <p class="service-meta">90 mins</p>
+    <p class="service-price">€55</p>
+
+    <a href="{% url 'bookings' %}" class="booking-btn">
+        Book Now
+    </a>
+</div>
 
 </section>
 

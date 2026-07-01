@@ -20,6 +20,7 @@ class Booking(models.Model):
      ('Eyebrow Shaping', 'Eyebrow Shaping'),
      ('Body Scrub', 'Body Scrub'),
      ('Bridal Beauty Package', 'Bridal Beauty Package'),
+     ('Hair Braiding', 'Hair Braiding'),
      ]
 
     name = models.CharField(max_length=100)
@@ -43,6 +44,7 @@ class Service(models.Model):
         max_digits=6,
         decimal_places=2
     )
+    image = models.ImageField(upload_to="services/", blank=True, null=True)
 
     def __str__(self):
         return self.name
